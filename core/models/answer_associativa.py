@@ -13,6 +13,5 @@ class AnswerAssociativa(models.Model) :
     
     def __str__(self) :
         return "Formulario " + str(self.id)
-
     class Meta:
         verbose_name_plural = "AnswerAssociativa"
