@@ -77,6 +77,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+        "SECRET_KEY":"django-insecure-LuA6I5xo4iMkl4z0MGSAIPHeH4ccz6bjMvYoVb0FAHU" ,
+        "DEBUG" : True,
     }
 }
 
@@ -142,12 +144,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media_files/")
 FILE_UPLOAD_PERMISSIONS = 0o640
 
 env = environ.Env()
-environ.Env.read_env((os.path.join(BASE_DIR, '.env')))
+environ.Env.read_env((os.path.join(BASE_DIR, ".env")))
 
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
-DATABASES = {'default': env.db()}
+# DATABASES = {'default': env.db()}
+ENGINE =env('ENGINE')
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# mudei arquivo .env
+# apaguei pastas MYSQL e mysqlclient
