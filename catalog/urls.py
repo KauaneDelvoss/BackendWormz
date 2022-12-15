@@ -22,6 +22,7 @@ router.register(r"answerassociativa", AnswerAssociativaViewSet)
 router.register(r"form", FormViewSet)
 router.register(r"question", QuestionViewSet)
 router.register(r"resolves", ResolvesViewSet)
+router.register(r"authors", AuthorViewSet)
 
 #router.register(r"type", TypeViewSet)
 #router.register(r"writes", WritesViewSet)
@@ -57,7 +58,10 @@ urlpatterns = [
 
     path('get/authors', AuthorViewSet.getAuthors, name="getAuthors"),
     path('get/genres', GenreViewSet.getGenres, name="getGenres"),
-    path('post/addBook', BookViewSet.createBook, name="createBook")
+    path('post/addBook', BookViewSet.createBook, name="createBook"),
+    path('post/addAuthor', AuthorViewSet.addAuthor, name="addAuthor"),
+    path('post/addGenre', GenreViewSet.addGenre, name="addGenre")
+
   
     ]
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)

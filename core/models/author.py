@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Author(models.Model) :
     name_author = models.CharField(max_length=100)
     author_biography = models.CharField(max_length=2000)
