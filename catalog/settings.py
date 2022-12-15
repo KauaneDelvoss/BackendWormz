@@ -77,6 +77,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+        "SECRET-KEY":"django-insecure-LuA6I5xo4iMkl4z0MGSAIPHeH4ccz6bjMvYoVb0FAHU",
+        "DEBUG": True
     }
 }
 
@@ -148,6 +150,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 DATABASES = {'default': env.db()}
+ENGINE=env('ENGINE')
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")

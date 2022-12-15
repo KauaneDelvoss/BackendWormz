@@ -63,6 +63,7 @@ class UserViewSet(ModelViewSet):
         data = serializers.data
 
         data.update(username=user.username)
+        data.update(staff=user.is_staff)
 
         jsonn = JSONRenderer().render(data)
         return HttpResponse(jsonn, content_type="text/json-comment-filtered")

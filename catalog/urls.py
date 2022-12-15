@@ -9,7 +9,7 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from core.views import UserViewSet, BookViewSet, BookshelfViewSet, GenreViewSet, ReviewViewSet, AnswerViewSet, QuestionViewSet, FormViewSet, AnswerAssociativaViewSet, ResolvesViewSet
+from core.views import AuthorViewSet, UserViewSet, BookViewSet, BookshelfViewSet, GenreViewSet, ReviewViewSet, AnswerViewSet, QuestionViewSet, FormViewSet, AnswerAssociativaViewSet, ResolvesViewSet
 
 
 router = DefaultRouter()
@@ -53,7 +53,11 @@ urlpatterns = [
     path('get/book/search/<slug:search>', BookViewSet.getSearch, name ="search"),
 
     path('post/review', ReviewViewSet.submitReview, name="submitReview"),
-    path('get/reviews/<int:id>', ReviewViewSet.getReviews, name="getReviews")
+    path('get/reviews/<int:id>', ReviewViewSet.getReviews, name="getReviews"),
+
+    path('get/authors', AuthorViewSet.getAuthors, name="getAuthors"),
+    path('get/genres', GenreViewSet.getGenres, name="getGenres"),
+    path('post/addBook', BookViewSet.createBook, name="createBook")
   
     ]
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)

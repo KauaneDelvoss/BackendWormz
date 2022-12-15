@@ -2,9 +2,12 @@ from rest_framework.viewsets import ModelViewSet
 
 from core.models import Book, Author, Genre
 from core.serializers import BookSerializer, AuthorSerializer
+from media.models import Image
 
 from django.http.response import HttpResponse
 from rest_framework.renderers import JSONRenderer
+
+import json
 
 
 class BookViewSet(ModelViewSet):
@@ -88,4 +91,25 @@ class BookViewSet(ModelViewSet):
         
         
         return HttpResponse(json, content_type="text/json-comment-filtered")
+
+    def createBook(request):
+        body = json.loads(request.body.decode('utf-8'))
+
+        print(body)
+
+        book = Book.objects.create(
+            name_book = body["name_book"],
+            resume = body["resume"],
+            pages = body["pages"],
+            link = body["link"],
+            price = body["price"],
+            capa = Image.objects.get(attachment_key = body["capa"])
+        )
+
+        book.genre.set(body["genre"])
+        book.author.set(Author.objects.filter(pk = body["author"][0]))
+
+        book.save()
+
+        return HttpResponse("Livro criado com sucesso!")
 
